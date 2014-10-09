@@ -43,38 +43,47 @@ function find(list, predicate) { / Do stuff / }
 var even = find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 //=> 2
  */
+
+
+//list = an array
+//predicate = some function that tests something - returns true if some number passes test
 function find(list, predicate) {
-    for (var i = 0; i < list.length; i++) {
-        if (predicate(list[i]) === true) {
-            return list[i];
+        //iterate through the array(list)
+        for (var i = 0; i < list.length; i++) {
+            //if the index of list passes the truth test return it
+            if (predicate(list[i]) === true) {
+                return list[i];
+            }
+        }
+        //else return undefined
+        return undefined;
+    }
+    //function that returns true if number is even
+function isEven(num) {
+        if (num % 2 === 0) {
+            return true;
         }
     }
-    return undefined;
-}
-
-function isEven(num) {
-    if (num % 2 === 0) {
-        return true;
-    }
-}
-
+    //function that returns true if number is odd
 function isOdd(num) {
-    if (num % 2 === 1) {
-        return true;
+        if (num % 2 === 1) {
+            return true;
+        }
     }
-}
-
+    //function that returns true if the number is 8
 function isEight(num) {
     if (num === 8) {
         return true;
     }
 }
-var arrayList = [1, 2, 3, 4, 5, 6];
-var even = find(arrayList, isEven);
-var odd = find(arrayList, isOdd);
-var eight = find(arrayList, isEight);
+var numList = [1, 2, 3, 4, 5, 6];
+//testing the find function
+var even = find(numList, isEven);
+var odd = find(numList, isOdd);
+var eight = find(numList, isEight);
 /*
-6.Write a function called where that looks through each value in the list, returning an array of all the values that contain all of the key-value pairs listed in properties.
+6.Write a function called where that looks through each value in the list,
+ returning an array of all the values that contain all of the key-value pairs listed in properties.
 
 function where(list, properties) { / Do stuff / }
 
@@ -82,3 +91,52 @@ where(listOfPlays, {author: "Shakespeare", year: 1611});
 // => [{title: "Cymbeline", author: "Shakespeare", year: 1611},
 //     {title: "The Tempest", author: "Shakespeare", year: 1611}]
  */
+
+
+//list of plays to test "where" function
+var listOfPlays = [{
+    title: "Cymbeline",
+    author: "Shakespeare",
+    year: 1611
+}, {
+    title: "The Tempest",
+    author: "Shakespeare",
+    year: 1611
+}, {
+    title: "A Streetcar Named Desire",
+    author: "Tennessee Williams",
+    year: 1947
+}, {
+    title: "Doubt",
+    author: "John Patrick Shanley",
+    year: 2005
+}];
+//list = some array of objects with properties
+//properties = some object with property/properties you are trying to match in "list"
+function where(list, properties) {
+    //new array to store matching properties
+    storeArray = [];
+    //iterate through "list" array
+    for (var i = 0; i < list.length; i++) {
+        //see if object has the property then see if object matches properties -- if true add object to new array
+        if (properties.title !== undefined) {
+            if (list[i].title === properties.title) {
+                storeArray.push(list[i]);
+                continue;
+            }
+        }
+        if (properties.author !== undefined) {
+            if (list[i].author === properties.author) {
+                storeArray.push(list[i]);
+                continue;
+            }
+        }
+        if (properties.year !== undefined) {
+            if (list[i].year === properties.year) {
+                storeArray.push(list[i]);
+                continue;
+            }
+        }
+    }
+    return storeArray;
+}
