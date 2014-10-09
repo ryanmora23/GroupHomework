@@ -43,10 +43,36 @@ function find(list, predicate) { / Do stuff / }
 var even = find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 //=> 2
  */
+function find(list, predicate) {
+    for (var i = 0; i < list.length; i++) {
+        if (predicate(list[i]) === true) {
+            return list[i];
+        }
+    }
+    return undefined;
+}
 
+function isEven(num) {
+    if (num % 2 === 0) {
+        return true;
+    }
+}
 
+function isOdd(num) {
+    if (num % 2 === 1) {
+        return true;
+    }
+}
 
-
+function isEight(num) {
+    if (num === 8) {
+        return true;
+    }
+}
+var arrayList = [1, 2, 3, 4, 5, 6];
+var even = find(arrayList, isEven);
+var odd = find(arrayList, isOdd);
+var eight = find(arrayList, isEight);
 /*
 6.Write a function called where that looks through each value in the list, returning an array of all the values that contain all of the key-value pairs listed in properties.
 
