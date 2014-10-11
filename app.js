@@ -50,7 +50,19 @@ var odds = reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 //=> [1, 3, 5]
  */
 
-
+function reject(list, predicate) {
+    arr = new Array;
+    for (i = 0; i < list.length; i++) {
+        if (!predicate(list[i])) {
+            arr[arr.length] = list[i]
+        }
+    }
+    return arr;
+}
+reject([1, 2, 3, 4, 5, 6],
+    function(num) {
+        return num % 2 == 0;
+    });
 
 /*
 5.Write a function called find that looks through each value in the list, returning the first one that passes a truth test (predicate), or undefined if no value passes the test. The function returns as soon as it finds an acceptable element, and doesn't traverse the entire list.
