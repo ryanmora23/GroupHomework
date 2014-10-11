@@ -15,20 +15,29 @@ function forEach(list, callback) { /Do stuff / }
 
 //3.Write a function called pluck that extracts a list of property names:
 
-function pluck(list, propertyName) { 
+function pluck(list, propertyName) {
 
-  var arr = []
-  for(var i in list){
-    //console.log(list[i]);
-    arr[arr.length] = list[i][propertyName];
-  }
-  return arr;
- }
+    var arr = []
+    for (var i in list) {
+        //console.log(list[i]);
+        arr[arr.length] = list[i][propertyName];
+    }
+    return arr;
+}
 
-var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+var stooges = [{
+    name: 'moe',
+    age: 40
+}, {
+    name: 'larry',
+    age: 50
+}, {
+    name: 'curly',
+    age: 60
+}];
 pluck(stooges, 'name');
 // => ["moe", "larry", "curly"]
- 
+
 
 
 
