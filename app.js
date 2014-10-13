@@ -2,17 +2,66 @@
 1.Write your own forEach function (like we did in class). It takes the array and the function (referred to as a callback) as arguments:
 
 function forEach(list, callback) { /Do stuff / }
+ 
  */
 
+
+
+var people = [{
+    name: 'Phil',
+    age: 27
+}, {
+    name: 'John',
+    age: 48
+}, {
+    name: 'Jane',
+    age: 19
+}, {
+    name: 'Morgan',
+    age: 37
+}, {
+    name: 'Bill',
+    age: 25
+}];
+
+var results = [];
+people.forEach(function(person) {
+
+    if (person.age >= 20 && person.age <= 30) {
+        results.push(person);
+    }
+});
 
 
 /*
 2. Write your own map, reduce, and filter functions that use your custom forEach to do their work.
  */
 
+var people = [{
+    name: 'Phil',
+    age: 27
+}, {
+    name: 'John',
+    age: 48
+}, {
+    name: 'Jane',
+    age: 19
+}, {
+    name: 'Morgan',
+    age: 37
+}, {
+    name: 'Bill',
+    age: 25
+}];
+function ages(person) {
+	return (person.age >=20 && person.age<=30);
+};
+var result = [];
+result = people.filter(ages);
 
 
-/*
+
+/* 
 3.Write a function called pluck that extracts a list of property names:
 
 function pluck(list, propertyName) { / Do stuff/ }
