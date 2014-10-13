@@ -194,6 +194,7 @@ function where(list, properties) {
     //iterate through "list" array
     for (var i = 0; i < list.length; i++) {
         //see if object has the property then see if object matches properties -- if true add object to new array
+        //and go to next iteration
         if (properties.title !== undefined) {
             if (list[i].title === properties.title) {
                 storeArray.push(list[i]);
