@@ -36,7 +36,6 @@ people.forEach(function(person) {
 /*
 2. Write your own map, reduce, and filter functions that use your custom forEach to do their work.
  */
-
 var people = [{
     name: 'Phil',
     age: 27
@@ -51,13 +50,22 @@ var people = [{
     age: 37
 }, {
     name: 'Bill',
-    age: 25
-}];
-function ages(person) {
-	return (person.age >=20 && person.age<=30);
-};
+  age: 25}];
+
+
+var results = [];
+results = names;
+
+function age(person) {
+	return (person.age >= 20 && person.age <= 40);
+}
 var result = [];
-result = people.filter(ages);
+result = people.filter(age);
+
+
+
+
+
 
 
 
