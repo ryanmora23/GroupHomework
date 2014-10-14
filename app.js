@@ -4,7 +4,7 @@
 function forEach(list, callback) { /Do stuff / }
  */
 
-var people = [{
+ var people = [{
     name: 'Phil',
     age: 27
 }, {
@@ -21,44 +21,53 @@ var people = [{
     age: 25
 }];
 
-var results = [];
-people.forEach(function(person) {
 
-    if (person.age >= 20 && person.age <= 30) {
-        results.push(person);
+
+function forEachfunction(person, callback) {
+    for (var i = 0, len = person.length; i < len; i++) {
+        callback(person[i], i, person);
     }
-});
 
+}
+console.log(people);
 /*
 2. Write your own map, reduce, and filter functions that use your custom forEach to do their work.
  */
 
-
-var people = [{
-    name: 'Phil',
-    age: 27
-}, {
-    name: 'John',
-    age: 48
-}, {
-    name: 'Jane',
-    age: 19
-}, {
-    name: 'Morgan',
-    age: 37
-}, {
-    name: 'Bill',
-    age: 25
-}];
-
-var letters = ["i", "a"];
-
-function age(person) {
-    return (person.age >= 20 && person.age <= 40);
+function forEachFilter(person, callback) {
+return (person.age >= 20 && person.age<= 40);
 }
-var result = [];
-result = people.filter(age);
 
+var result =[];
+result = people.filter(forEachFilter);
+
+
+
+
+
+function forEachMap(subject, callback) {
+    var nameandage = [];
+    forEach(subject, function(val, i, arr) {
+        nameandage.push(people.name + " " + people.age);
+    });
+    return nameandage;
+}
+
+
+
+
+function forEachReduce(list, callback, initialValue) {
+    var value,
+        prevVal = initialValue;
+
+    
+    if(initialValue) list.unshift(initialValue);
+    forEach(list, function(val, i, arr) {
+        if(i === 0) return;
+        prevVal = callback(prevVal, arr[i], i, arr);
+    });
+    return prevVal;
+}
 //3.Write a function called pluck that extracts a list of property names:
 
 function pluck(list, propertyName) {
@@ -123,29 +132,29 @@ var even = find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
 //list = an array
 //predicate = some function that tests something - returns true if some number passes test
 function find(list, predicate) {
-        //iterate through the array(list)
-        for (var i = 0; i < list.length; i++) {
-            //if the index of list passes the truth test return it
-            if (predicate(list[i]) === true) {
-                return list[i];
-            }
+    //iterate through the array(list)
+    for (var i = 0; i < list.length; i++) {
+        //if the index of list passes the truth test return it
+        if (predicate(list[i]) === true) {
+            return list[i];
         }
-        //else return undefined
-        return undefined;
     }
-    //function that returns true if number is even
+    //else return undefined
+    return undefined;
+}
+//function that returns true if number is even
 function isEven(num) {
-        if (num % 2 === 0) {
-            return true;
-        }
+    if (num % 2 === 0) {
+        return true;
     }
-    //function that returns true if number is odd
+}
+//function that returns true if number is odd
 function isOdd(num) {
-        if (num % 2 === 1) {
-            return true;
-        }
+    if (num % 2 === 1) {
+        return true;
     }
-    //function that returns true if the number is 8
+}
+//function that returns true if the number is 8
 function isEight(num) {
     if (num === 8) {
         return true;
